@@ -25,23 +25,9 @@ RUN mkdir -p -m 777 /root/shared \
     && echo "alias el='tail -f /var/log/nginx/error.log'" >> ~/.bashrc \
     && echo "alias al='tail -f /var/log/nginx/access.log'" >> ~/.bashrc
 
-# Add the starters and installers:
-ADD ./containerfiles/ /root/containerfiles
-
-RUN chmod 777 /root/containerfiles/*.sh
 
 # Intalling the nginx 
 RUN apt-get install -y nginx
 
-# Adding the default file
-RUN cp /root/containerfiles/index.html /usr/share/nginx/html
-
-# Run/Compose ENV Variables:
-ENV ENV_BASE_NGINX_CONFIG /root/containerfiles/base_nginx.conf
-ENV ENV_DERIVED_NGINX_CONFIG /root/containerfiles/non_ssl.conf
-ENV ENV_DEFAULT_ROOT_VOLUME /opt/web
-
 # Port
 EXPOSE 80 443
-
-CMD ["/root/containerfiles/start-container.sh"]
