@@ -5,7 +5,6 @@ MAINTAINER Docker Education Team <education@docker.com>
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q python-all python-pip 
 
-RUN apt-get install -y epel-release;
 RUN apt-get install -y python-pip; pip install --upgrade pip; apt-get install -y vim telnet curl mlocate logrotate rsyslog cron tar openssl openssl-dev net-tools
 
 # Set default environment variables.
