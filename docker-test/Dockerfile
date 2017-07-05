@@ -8,4 +8,4 @@ RUN apt-get install -y apache2
 RUN service apache2 start
 
 EXPOSE 80
-# End Nginx-PHP
+
