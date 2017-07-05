@@ -6,7 +6,6 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q python-all python-pip 
 
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y vim curl wget build-essential python-software-properties
-RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get update
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y nginx
 
