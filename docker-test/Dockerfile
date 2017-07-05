@@ -10,7 +10,6 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y nginx
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-ADD build/default   /etc/nginx/sites-available/default
 RUN mkdir           /etc/service/nginx
 ADD build/nginx.sh  /etc/service/nginx/run
 RUN chmod +x        /etc/service/nginx/run
