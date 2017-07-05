@@ -8,12 +8,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q python-all python-pip
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y vim curl wget build-essential python-software-properties
 RUN apt-get update
 RUN DEBIAN_FRONTEND="noninteractive" apt-get install -y nginx
+RUN service nginx start
 
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-RUN mkdir           /etc/service/nginx
-ADD build/nginx.sh  /etc/service/nginx/run
-RUN chmod +x        /etc/service/nginx/run
-EXPOSE 80
+EXPOSE 8081
 # End Nginx-PHP
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
