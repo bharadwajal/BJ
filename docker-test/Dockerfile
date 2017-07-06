@@ -1,5 +1,4 @@
 #Feature-1
-#Download base image ubuntu 16.04
 FROM ubuntu:16.04
  
 # Update Software repository
@@ -16,9 +15,9 @@ ENV nginx_conf /etc/nginx/nginx.conf
 ENV supervisor_conf /etc/supervisor/supervisord.conf
  
 # Enable php-fpm on nginx virtualhost configuration
-COPY default /etc/nginx/sites-available/default
+COPY default ${nginx_vhost}
 RUN sed -i -e 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' ${php_conf} && \
-    echo "\ndaemon off;" >> /etc/nginx/sites-available/default
+    echo "\ndaemon off;" >> ${nginx_conf}
  
 #Copy supervisor configuration
 COPY supervisord.conf ${supervisor_conf}
@@ -35,4 +34,3 @@ COPY start.sh /start.sh
 CMD ["./start.sh"]
  
 EXPOSE 80 443
-
