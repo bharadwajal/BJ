@@ -1,9 +1,9 @@
 #Feature-1
-#This is a test docker file
+#Download base image ubuntu 16.04
 FROM ubuntu:16.04
-MAINTAINER Docker Education Team <education@docker.com>
+ 
+# Update Software repository
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q python-all python-pip 
  
 # Install nginx, php-fpm and supervisord from ubuntu repository
 RUN apt-get install -y nginx php7.0-fpm supervisor && \
